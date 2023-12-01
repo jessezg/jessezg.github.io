@@ -5172,6 +5172,106 @@ img[fancybox='true'] {
 .swiper-slide {
   cursor: zoom-in;
 }
+pre.mermaid {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  font-family: system-ui, "Microsoft Yahei", "Segoe UI", -apple-system, Roboto, Ubuntu, "Helvetica Neue", Arial, "WenQuanYi Micro Hei", sans-serif;
+}
+.mermaid svg {
+  width: 100%;
+  display: inline-block;
+}
+.mermaid svg {
+  width: 100%;
+  display: inline-block;
+}
+.mermaid span,
+text {
+  font-family: system-ui, "Microsoft Yahei", "Segoe UI", -apple-system, Roboto, Ubuntu, "Helvetica Neue", Arial, "WenQuanYi Micro Hei", sans-serif;
+}
+.mermaid .edgeLabel {
+  padding: 4px;
+  background-color: var(--site-bg) !important;
+}
+.mermaid rect.basic.label-container {
+  stroke: var(--block-border) !important;
+  fill: var(--block) !important;
+}
+@media (prefers-color-scheme: dark) {
+  .mermaid {
+    fill: #ccc !important;
+  }
+  .mermaid .error-icon {
+    fill: #a44141 !important;
+  }
+  .mermaid .error-text {
+    fill: #ddd !important;
+    stroke: #ddd !important;
+  }
+  .mermaid .marker {
+    fill: #d3d3d3 !important;
+    stroke: #d3d3d3 !important;
+  }
+  .mermaid .marker.cross {
+    stroke: #d3d3d3 !important;
+  }
+  .mermaid .label {
+    color: #ccc !important;
+  }
+  .mermaid .cluster-label text {
+    fill: #f9fffe !important;
+  }
+  .mermaid .cluster-label span {
+    color: #f9fffe !important;
+  }
+  .mermaid .label text,
+  .mermaid span {
+    fill: #ccc !important;
+    color: #ccc !important;
+  }
+  .mermaid .node rect,
+  .mermaid .node circle,
+  .mermaid .node ellipse,
+  .mermaid .node polygon,
+  .mermaid .node path {
+    fill: #1f2020 !important;
+    stroke: #81b1db !important;
+  }
+  .mermaid .arrowheadPath {
+    fill: #d3d3d3 !important;
+  }
+  .mermaid .edgePath .path {
+    stroke: #d3d3d3 !important;
+  }
+  .mermaid .flowchart-link {
+    stroke: #d3d3d3 !important;
+  }
+  .mermaid .edgeLabel {
+    background-color: #585858 !important;
+  }
+  .mermaid .edgeLabel rect {
+    background-color: #585858 !important;
+    fill: #585858 !important;
+  }
+  .mermaid .cluster rect {
+    fill: #474949 !important;
+    stroke: rgba(255,255,255,0.25) !important;
+  }
+  .mermaid .cluster text {
+    fill: #f9fffe !important;
+  }
+  .mermaid .cluster span {
+    color: #f9fffe !important;
+  }
+  .mermaid div.mermaidTooltip {
+    background: #201f1f !important;
+    border: 1px solid rgba(255,255,255,0.25) !important;
+  }
+  .mermaid .flowchartTitleText {
+    fill: #ccc;
+  }
+}
 .highlight {
   position: relative;
 }
