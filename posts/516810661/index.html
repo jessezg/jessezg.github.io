@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>MathJax 语法 - JesseZG的个人博客૮(˶ᵔ ᵕ ᵔ˶)ა</title>
+
+  
+    <meta name="description" content="能够表示数学表达式的开源 JavaScript 显示引擎">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MathJax 语法">
+<meta property="og:url" content="http://jessezg.github.io/posts/516810661/index.html">
+<meta property="og:site_name" content="JesseZG的个人博客૮(˶ᵔ ᵕ ᵔ˶)ა">
+<meta property="og:description" content="能够表示数学表达式的开源 JavaScript 显示引擎">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-08T07:04:11.000Z">
+<meta property="article:modified_time" content="2023-12-08T08:15:01.367Z">
+<meta property="article:author" content="JesseZG">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="Markdown">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+  <meta name="keywords" content="数学,Markdown">
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="title" href="/"><div class="main" ff="title">JesseZG的个人博客</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item" href="/categories/">分类</a><a class="nav-item" href="/tags/">标签</a><a class="nav-item" href="/archives/">归档</a><a class="nav-item" href="/friends/">友链</a><a class="nav-item" href="/about/">关于</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">MathJax 语法</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E4%BB%8B%E7%BB%8D"><span class="toc-text">语言介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MathJax"><span class="toc-text">MathJax</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#KaTeX"><span class="toc-text">KaTeX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MathJax-%E4%B8%8E-KaTeX"><span class="toc-text">MathJax 与 KaTeX</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MathJax-%E5%9F%BA%E7%A1%80"><span class="toc-text">MathJax 基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MathJax-%E5%8D%95%E8%A1%8C%E5%85%AC%E5%BC%8F"><span class="toc-text">MathJax 单行公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%AC%E5%8F%B7"><span class="toc-text">括号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%A0%87"><span class="toc-text">上下标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%BB%84"><span class="toc-text">分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%BC%8F%E6%A0%B9%E5%BC%8F"><span class="toc-text">分式根式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E5%92%8C%E7%A7%AF%E5%88%86%E6%9E%81%E9%99%90%E7%AC%A6%E5%8F%B7"><span class="toc-text">求和积分极限符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%88%86%E5%B8%83"><span class="toc-text">空间分布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B6%E9%83%A8%E7%AC%A6%E5%8F%B7"><span class="toc-text">顶部符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%8C%E8%85%8A%E5%8F%8A%E5%85%B6%E4%BB%96%E5%AD%97%E6%AF%8D"><span class="toc-text">希腊及其他字母</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E4%BD%93"><span class="toc-text">字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%9C%E8%89%B2"><span class="toc-text">颜色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%AC%A6%E5%8F%B7"><span class="toc-text">其他符号</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0"><span class="toc-text">三角函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">比较运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E5%8F%B7"><span class="toc-text">运算符号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9C%81%E7%95%A5%E5%8F%B7"><span class="toc-text">省略号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">集合运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A8%E7%A4%BA%E6%8E%92%E5%88%97%E6%95%B0"><span class="toc-text">表示排列数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%AD%E5%A4%B4"><span class="toc-text">箭头</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">逻辑运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A8%E7%A4%BA%E7%AD%89%E4%BA%8E%E5%90%AB%E4%B9%89%E7%9A%84%E7%AC%A6%E5%8F%B7"><span class="toc-text">表示等于含义的符号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%96%E4%BD%99%E7%AC%A6%E5%8F%B7"><span class="toc-text">取余符号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%AC%A6%E5%8F%B7-2"><span class="toc-text">其他符号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%A4%BA%E4%BE%8B"><span class="toc-text">其他示例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MathJax-%E5%A4%9A%E8%A1%8C%E5%85%AC%E5%BC%8F"><span class="toc-text">MathJax 多行公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MathJax-%E6%A0%87%E8%AE%B0%E5%92%8C%E5%BC%95%E7%94%A8"><span class="toc-text">MathJax 标记和引用</span></a></li></ol></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+    
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+          }
+        });
+      </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+            tex2jax: {
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+          });
+      </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+              var all = MathJax.Hub.getAllJax(), i;
+              for(i=0; i < all.length; i += 1) {
+                  all[i].SourceElement().parentNode.className += ' has-jax';
+              }
+          });
+      </script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@v9/dist/mermaid.min.js"></script>
+
+  <script>
+    var mermaid_config = {
+      startOnLoad: true,
+      theme:
+        "auto" == "auto" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "neutral",
+      logLevel: 3,
+      themeVariables: {
+        darkMode: true
+      },
+      flowchart: {
+        useMaxWidth: false,
+        htmlLabels: true,
+        curve: "linear"
+      },
+      gantt: {
+        axisFormat: "%Y/%m/%d"
+      },
+      sequence: {
+        actorMargin: 50
+      }
+    }
+    if (window.mermaid) {
+      mermaid.initialize(mermaid_config);
+    }
+  </script>
+
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%B0%8F%E5%B1%8B/">技术小屋</a> <span class="sep"></span> <a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%B0%8F%E5%B1%8B/Markdown/">Markdown</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-12-08T07:04:11.000Z">2023-12-08</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>MathJax 语法</span></h1>
+<!--
+    本文版本更新日志：
+        2023-12-02 v0.0.0 完成前言和语言介绍部分
+
+        2023-12-03 v0.1.0 将 MathJax 和 Mermaid 文章分离
+
+        2023-12-07 v0.1.1 补充
+
+        2023-12-08 v1.0.0 完成基础部分，发布在 post 上
+
+        2023-12-08 v1.1.0 因为将 Markdown 的解释器换了一个，所以重写了一遍，改了好多 Bug
+  
+-->
+<!--
+    未解决:
+
+        多行公式和引用待补充
+    
+-->
+<h2 id="前言">前言</h2>
+<p>因为想要深入了解 Hexo，在翻文档的时候找到 MathJax，KaTeX，Mermaid 这三个东西，今天无聊所以顺便研究了一下，感觉还算是有用，所以写了这一篇文章整理一下这 MathJax 的功能和语法。</p>
+<h2 id="语言介绍">语言介绍</h2>
+<h3 id="MathJax">MathJax</h3>
+<p>MathJax 是一个用于 Latex、Mathml 和 Ascimath 表示法的开源 JavaScript 显示引擎，可在所有现代浏览器中工作，能够嵌入到 HTML 文件或 Markdown 文件中，通过 ASCII 字符书写一些常用的数学符号和公式。</p>
+<h3 id="KaTeX">KaTeX</h3>
+<p>LaTeX 是 TeX 中的一种格式(format) ，是建立在 TeX 基础上的宏语言，能够通过文本实现图标表格、数学表达式、化学分子式，甚至五线谱、棋谱、电路图等通过文本难以实现的效果，是学生写论文的常用语言。</p>
+<p>KaTeX 是 LaTeX 的一个子集，能够实现 LaTeX 中的数学公式部分，是一个支持 HTML 的轻量级的数学公式引擎。（ KaTeX 这个词实在是太难打啦！）</p>
+<h3 id="MathJax-与-KaTeX">MathJax 与 KaTeX</h3>
+<p>MathJax 与 KaTeX 都是书写数学表达式的语言，语法相似，KaTeX 渲染更快，支持若干简写字符，但是本身支持的范围较小；MathJax 渲染稍慢，支持更多复杂的表示，本博客的数学公式（暂时）全部使用 MathJax，未来可能会更新有关 KaTeX 语法的内容。</p>
+<h2 id="MathJax-基础">MathJax 基础</h2>
+<h3 id="MathJax-单行公式">MathJax 单行公式</h3>
+<p>Mathjax 默认情况可以使用单对、两对美元符号来表示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ F = ma $</span><br><span class="line">$$ F = ma $$</span><br></pre></td></tr></table></figure>
+<p>$ F = ma $<br>
+$$ F = ma $$</p>
+<h3 id="括号">括号</h3>
+<p>小括号“ () ”和中括号“ [] ”在 MathJax 中可以直接表示；大括号“ { } ”通过“ \{ ”，“ \} ”表示，尖括号“”通过“ \langle ”，“ \rangle ”表示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$$ (), [], &#123;&#125; &lt;&gt;$$</span><br><span class="line">$$ \&#123;, \&#125;, \langle, \rangle $$</span><br></pre></td></tr></table></figure>
+<p>$$ (), [], {} &lt;&gt;$$<br>
+$$ {, }, \langle, \rangle $$</p>
+<p>上取整$\text(\lceil\rceil)$通过使用\lceil和\rceil表示，下取整$\text(\lceil\rceil)$通过使用\lceil和\rceil表示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$ \lceil &#123;2.8&#125; \rceil = 3 $$</span><br><span class="line">$$ \lfloor &#123;2.8&#125; \rfloor = 2 $$</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>$$ \lceil {2.8} \rceil = 3 $$<br>
+$$ \lfloor {2.8} \rfloor = 2 $$</p>
+<h3 id="上下标">上下标</h3>
+<p>当数学表达式中需要表示上标、下标、次方时依次通过上箭头“^”和下划线“_”后面加上数字表示。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$ x ^ 2 $$</span><br><span class="line">$$ x _ 1 $$</span><br><span class="line">$$ x ^ 2 _ 1 + x ^ 2 _ 2 = 1 $$</span><br></pre></td></tr></table></figure>
+<p>$$ x ^ 2 $$<br>
+$$ x _ 1 $$<br>
+$$ x ^ 2 _ 1 + x ^ 2 _ 2 = 1 $$</p>
+<h3 id="分组">分组</h3>
+<p>当表达式多于一个字符时，需要用大括号“ { } ”括起来。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ a ^ x = e ^ &#123;xlna&#125; $$</span><br></pre></td></tr></table></figure>
+<p>$$ a ^ x = e ^ {xlna} $$</p>
+<p>如果希望表达式中没有字符，也可以通过大括号中不加内容代表空字符。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$$ x ^ &#123;&#125; $$</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>$$ x ^ {} $$</p>
+<h3 id="分式根式">分式根式</h3>
+<p>MathJax中分式有两种表示形式。</p>
+<ol>
+<li class="lvl-3">
+<p>“\frac”，后面接的两个表达式依次是分子和分母。</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \frac 1 &#123;x^2+1&#125; $$</span><br></pre></td></tr></table></figure>
+<p>$$ \frac 1 {x^2+1} $$</p>
+<ol start="2">
+<li class="lvl-3">
+<p>“\over”，前面是表达式的分子，右面是表达式的分母。</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ 1 \over &#123;x^2+1&#125; $$</span><br></pre></td></tr></table></figure>
+<p>$$ 1 \over {x^2+1} $$</p>
+<p>3.“\frac”会使表达的分子分母越来越小，不建议表示繁分数，连分数等，可以使用“\cfrac”进行表示。</p>
+<h3 id="求和积分极限符号">求和积分极限符号</h3>
+<p>在 MathJax 中，无穷写作\infty。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \infty $$</span><br></pre></td></tr></table></figure>
+<p>$$ \infty $$</p>
+<p>求和、求积、积分、二重积分、三重积分、环积分其实就是一个符号，通过加上下标实现，分别写作“ \sum ”“ \prod ”“ \int ”“ \iint ”“ \iiint ”“ \oint ”<br>
+如果需要将数字写到这些符号的正下、上方，需要在转移式后接上\limits_来将上下标写在正上、下方。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$$ \sum \limits _ &#123;k=1&#125; ^ n = \frac 1 2 n(n+1) $$</span><br><span class="line">$$ \int x ^ \alpha dx = \frac &#123;x^&#123;a+1&#125;&#125; &#123;ax+1&#125; + c $$</span><br><span class="line">$$ \prod _ &#123;p\epsilon A&#125; \frac &#123;p^2&#125; &#123;p^2-1&#125; = \frac &#123;\pi^2&#125; 6 $$</span><br><span class="line">$$ \iint _ D f(x,y) dxdy = \int ^ &#123;2\pi&#125; _ 0 \int ^ &#123;\rho&#125; _ 0 f(\rho,\theta) \rho d\rho d\theta $$</span><br><span class="line">$$ \oint f(z) dz = 0 $$</span><br></pre></td></tr></table></figure>
+<p>$$ \sum \limits _ {k=1} ^ n = \frac 1 2 n(n+1) $$<br>
+$$ \int x ^ \alpha dx = \frac {x^{a+1}} {ax+1} + c $$<br>
+$$ \prod _ {p\epsilon A} \frac {p^2} {p^2-1} = \frac {\pi^2} 6 $$<br>
+$$ \iint _ D f(x,y) dxdy = \int ^ {2\pi} _ 0 \int ^ {\rho} _ 0 f(\rho,\theta) \rho d\rho d\theta $$<br>
+$$ \oint f(z) dz = 0 $$</p>
+<p>极限同理，用\to 表示趋近于。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \lim \limits _ &#123;x\to0&#125; \frac &#123;sinx&#125; x = 1 $$</span><br></pre></td></tr></table></figure>
+<p>$$ \lim \limits _ {x\to0} \frac {sinx} x = 1 $$</p>
+<h3 id="空间分布">空间分布</h3>
+<p>MathJax 中无法通过空格分隔字符，可以通过在两个字符中间间加入“\quad”和“\qquad”会增加间隔。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$$ ab $$</span><br><span class="line">$$ a b $$</span><br><span class="line">$$ a  b $$</span><br><span class="line">$$ a \quad b $$</span><br><span class="line">$$ a \qquad b $$</span><br></pre></td></tr></table></figure>
+<p>$$ ab $$<br>
+$$ a b $$<br>
+$$ a  b $$<br>
+$$ a \quad b $$<br>
+$$ a \qquad b $$</p>
+<p>在 MathJax 中由于空格不会影响排版，可以通过空格提高语句可读性，解决单词连起来的问题。</p>
+<h3 id="顶部符号">顶部符号</h3>
+<p>在变量前面加上“\hat”上的“倒帽子”；如果对多个变量表示倒帽子需要在前面加上“\widehat”表示“长倒帽子”，类似的还有 ：<br>
+“\overline”（平均值的横帽子）<br>
+\vec（向量的箭头帽子）<br>
+\overrightarrow（向右的箭头帽子）<br>
+\overrightarrow（向右的箭头帽子）<br>
+\dot（变量上面一个点）<br>
+\ddot（变量上面两个点）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \hat x,\hat &#123;xy&#125;,\widehat x,\widehat &#123;xy&#125;,\overline x,\vec x,\overrightarrow x,\overleftarrow x,\dot x,\ddot x $$</span><br></pre></td></tr></table></figure>
+<p>$$ \hat x,\hat {xy},\widehat x,\widehat {xy},\overline x,\vec x,\overrightarrow x,\overleftarrow x,\dot x,\ddot x $$</p>
+<h3 id="希腊及其他字母">希腊及其他字母</h3>
+<p>MathJax 中小写希腊字母由斜杠加上希腊字母的英文名来表示，大写希腊字母需要将英文名首字母大写（如果一个希腊大写字母在拉丁大写字母中也存在,可以直接用大写拉丁字母表示）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$$ \Gamma, \Delta, \Theta, \Lambda, \Xi, </span><br><span class="line">\Pi, \Sigma, \Upsilon, \Phi, </span><br><span class="line">\Psi, \Omega $$</span><br><span class="line">$$ \alpha, \beta, \gamma, \delta, \epsilon, \zeta, </span><br><span class="line">\eta, \theta, \iota, \kappa, \lambda, \mu, \nu, \xi, </span><br><span class="line">\omicron, \pi, \rho, \sigma, \tau, \upsilon, \phi, </span><br><span class="line">\chi, \psi, \omega $$</span><br></pre></td></tr></table></figure>
+<p>$$ \Gamma, \Delta, \Theta, \Lambda, \Xi,<br>
+\Pi, \Sigma, \Upsilon, \Phi,<br>
+\Psi, \Omega $$</p>
+<p>$$ \alpha, \beta, \gamma, \delta, \epsilon, \zeta,<br>
+\eta, \theta, \iota, \kappa, \lambda, \mu, \nu, \xi,<br>
+\omicron, \pi, \rho, \sigma, \tau, \upsilon, \phi,<br>
+\chi, \psi, \omega $$</p>
+<p>对于一些其他有多种表示方法的希腊字母和希伯来字母在此列出。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$ </span><br><span class="line">\digamma, \varepsilon, \vartheta, \varkappa, \varpi, \varrho, \varsigma, \varphi, \aleph, \beth, \daleth, \gimel </span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<p>$$ \digamma, \varepsilon, \vartheta, \varkappa, \varpi, \varrho, \varsigma, \varphi<br>
+, \aleph, \beth, \daleth, \gimel $$</p>
+<h3 id="字体">字体</h3>
+<p>为适应不同的学科需求（主要是数学） MathJax 可以表示多种字体。</p>
+<p>使用“\mathbb”和“\Bbb”来表示黑板粗体字，常用于表示数集（没有小写的形式）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$$ \mathbb &#123;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#125; $$</span><br><span class="line">$$ \Bbb &#123;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#125; $$</span><br></pre></td></tr></table></figure>
+<p>$$ \mathbb {ABCDEFGHIJKLMNOPQRSTUVWXYZ} $$<br>
+$$ \Bbb {ABCDEFGHIJKLMNOPQRSTUVWXYZ} $$</p>
+<p>使用“\mathbf”表示黑体字。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$$ \mathbf &#123;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#125; $$</span><br><span class="line">$$ \mathbf &#123;abcdefghijklmnopqrstuvwxyz&#125; $$</span><br></pre></td></tr></table></figure>
+<p>$$ \mathbf {ABCDEFGHIJKLMNOPQRSTUVWXYZ} $$<br>
+$$ \mathbf {abcdefghijklmnopqrstuvwxyz} $$</p>
+<p>使用“\mathtt”表示打印机字体。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$$ \mathtt &#123;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#125; $$</span><br><span class="line">$$ \mathtt &#123;abcdefghijklmnopqrstuvwxyz&#125; $$</span><br></pre></td></tr></table></figure>
+<p>$$ \mathtt {ABCDEFGHIJKLMNOPQRSTUVWXYZ} $$<br>
+$$ \mathtt {abcdefghijklmnopqrstuvwxyz} $$</p>
+<p>使用“\mathrm”表示打印机字体。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$$ \mathrm &#123;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#125; $$</span><br><span class="line">$$ \mathrm &#123;abcdefghijklmnopqrstuvwxyz&#125; $$</span><br></pre></td></tr></table></figure>
+<p>$$ \mathrm {ABCDEFGHIJKLMNOPQRSTUVWXYZ} $$<br>
+$$ \mathrm {abcdefghijklmnopqrstuvwxyz} $$</p>
+<p>使用“\mathscr”表示手写花体。（没有小写的形式）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \mathscr &#123;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#125; $$</span><br></pre></td></tr></table></figure>
+<p>$$ \mathscr {ABCDEFGHIJKLMNOPQRSTUVWXYZ} $$</p>
+<p>使用“\mathfrak”表示Fraktur字体（我也不知道是什么(⌯꒪꒫꒪)੭）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \mathfrak &#123;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#125; $$</span><br></pre></td></tr></table></figure>
+<p>$$ \mathfrak {ABCDEFGHIJKLMNOPQRSTUVWXYZ} $$<br>
+$$ \mathfrak {abcdefghijklmnopqrstuvwxyz} $$</p>
+<h3 id="颜色">颜色</h3>
+<p>在 MathJax 中，通过“\color”来对文本实现染色，之后接的第一个变量是想要显示的文字颜色（直接写颜色名），第二个变量是要染色的文本。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \color &#123;red&#125; &#123;\text &#123;I&#x27;m red&#125;| $$</span><br></pre></td></tr></table></figure>
+<p>$$ \color {red} {\text {I’m red}| $$</p>
+<p>注：命名颜色是浏览器相关的，如果浏览器没有定义相关的颜色名称，则相关文本将被渲染为黑色，推荐使用十六进制的二进制保护色。</p>
+<h3 id="其他符号">其他符号</h3>
+<h4 id="三角函数">三角函数</h4>
+<p>常见的三角函数可以直接在前面加上斜杠表示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \csc x, \arcsin x, \tanh x $$</span><br></pre></td></tr></table></figure>
+<p>$$ \csc x, \arcsin x, \tanh x $$</p>
+<h4 id="比较运算符">比较运算符</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \lt, \gt, \le, \ge, \neq $$</span><br></pre></td></tr></table></figure>
+<p>$$ \lt, \gt, \le, \ge, \neq $$</p>
+<p>可以在这些运算符前面加上“\not”来表示“不”的意思。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \not \lt, \not \gt, \not \le, \not \ge, \not \neq $$</span><br></pre></td></tr></table></figure>
+<p>$$ \not \lt, \not \gt, \not \le, \not \ge, \not \neq $$</p>
+<h4 id="运算符号">运算符号</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \times, \div, \pm, \mp $$</span><br></pre></td></tr></table></figure>
+<p>$$ \times, \div, \pm, \mp $$</p>
+<h4 id="省略号">省略号</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \cdots, \ldots, \dots, \ddots, \vdots $$</span><br></pre></td></tr></table></figure>
+<p>$$ \cdots, \ldots, \dots, \ddots, \vdots $$</p>
+<p>\ldots比\cdots高一些</p>
+<h4 id="集合运算符">集合运算符</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$ \cup, \cap, \setminus, \subset, </span><br><span class="line">\subseteq, \subsetneq, \supset, </span><br><span class="line">\in, \notin, \emptyset, \varnothing $$</span><br></pre></td></tr></table></figure>
+<p>$$ \cup, \cap, \setminus, \subset,<br>
+\subseteq, \subsetneq, \supset,<br>
+\in, \notin, \emptyset, \varnothing $$</p>
+<h4 id="表示排列数">表示排列数</h4>
+<p>集合有两种表示方式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$$ \binom &#123;n+1&#125; &#123;2k&#125; $$</span><br><span class="line">$$ &#123;n+1 \choose 2k&#125; $$</span><br></pre></td></tr></table></figure>
+<p>$$ \binom {n+1} {2k} $$<br>
+$$ {n+1 \choose 2k} $$</p>
+<h4 id="箭头">箭头</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \to, \rightarrow, \leftarrow, \Rightarrow, \Leftarrow, \mapsto $$</span><br></pre></td></tr></table></figure>
+<p>$$ \to, \rightarrow, \leftarrow, \Rightarrow, \Leftarrow, \mapsto $$</p>
+<h4 id="逻辑运算符">逻辑运算符</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \land, \lor, \lnot, \forall, \exists, \top, \bot, \vdash, \vDash $$</span><br></pre></td></tr></table></figure>
+<p>$$ \land, \lor, \lnot, \forall, \exists, \top, \bot, \vdash, \vDash $$</p>
+<h4 id="表示等于含义的符号">表示等于含义的符号</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \approx, \sim, \cong, \equiv, \prec $$</span><br></pre></td></tr></table></figure>
+<p>$$ \approx, \sim, \cong, \equiv, \prec $$</p>
+<h4 id="取余符号">取余符号</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ a \equiv b \pmod n $$</span><br></pre></td></tr></table></figure>
+<p>$$ a \equiv b \pmod n $$</p>
+<h4 id="其他符号-2">其他符号</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \star, \ast, \oplus, \circ, \bullet $$</span><br></pre></td></tr></table></figure>
+<p>$$ \star, \ast, \oplus, \circ, \bullet $$</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \infty, \aleph_o, \nabla, \partial, \Im, \Re $$</span><br></pre></td></tr></table></figure>
+<p>$$ \infty, \aleph_o, \nabla, \partial, \Im, \Re $$</p>
+<h4 id="其他示例">其他示例</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \&#123; x \mid x\in \Bbb Z\&#125; $$</span><br></pre></td></tr></table></figure>
+<p>$$ { x \mid x \in \Bbb Z} $$</p>
+<h2 id="MathJax-多行公式">MathJax 多行公式</h2>
+<p>（待补充）</p>
+<h2 id="MathJax-标记和引用">MathJax 标记和引用</h2>
+
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/posts/278629411/">hexo-renderer-markdown-it 语法</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/posts/3950149617/">Python + Scipy + Matplotlib 实现任意一元函数拟合</a></div></section></div>
+
+
+
+
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客</span><a href="/">近期</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">项目</span><a href="/categories/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4/">博客维护</a><a href="/categories/%E6%8A%80%E6%9C%AF%E5%B0%8F%E5%B1%8B/">技术小屋</a><a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><a href="/categories/%E5%9B%9E%E5%BF%86%E5%BD%95/">回忆录</a><a href="/categories/%E4%BD%9C%E5%93%81%E5%BB%8A/">作品廊</a></div><div class="sitemap-group"><span class="fs14">社交</span><a href="/friends/">友链</a><a href="/404/">留言板</a></div><div class="sitemap-group"><span class="fs14">更多</span><a href="/about/">关于本站</a><a target="_blank" rel="noopener" href="https://www.github.com/jessezg/">GitHub</a></div></div><div class="text"><p>本站由 JesseZG 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。</p>
+<p>本博客素材均来源于网络，如有侵权请联系 <a href="mailto:z12502793@163.com">z12502793@163.com</a> 删除</p>
+<p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
