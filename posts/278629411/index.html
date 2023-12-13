@@ -31,7 +31,7 @@
 <meta property="og:description" content="对 hexo-renderer-markdown-it 语法的大致介绍和研究">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-12-08T10:52:46.000Z">
-<meta property="article:modified_time" content="2023-12-08T12:17:59.155Z">
+<meta property="article:modified_time" content="2023-12-12T09:16:40.116Z">
 <meta property="article:author" content="JesseZG">
 <meta property="article:tag" content="Markdown">
 <meta name="twitter:card" content="summary">
@@ -103,11 +103,15 @@
 <h1 class="article-title"><span>【Markdown】hexo-renderer-markdown-it 语法</span></h1>
 <!--
   本文版本更新日志：
-  v0.1.0 完成文章结构和内容，但存在一大堆 Bug
+    2023-12-08 v0.1.0 完成文章结构和内容，但存在一大堆 Bug
 
-  v1.0.0 将标题 “GFM 扩展语法” 更改为 “hexo-renderer-markdown-it” 语法，并修改了大多数内容
+    2023-12-09 v1.0.0 将标题 “GFM 扩展语法” 更改为 “hexo-renderer-markdown-it” 语法，并修改了大多数内容
   
-  v1.1.0 完成全部内容，完成调试 
+    2023-12-09 v1.1.0 调试 
+-->
+<!--
+  未解决:
+
 -->
 <h2 id="前言">前言</h2>
 <p>最近因为在研究博客，意外在 theme 的 config_yml 里面发现了 MathJax, Mermaid, KaTeX 这三个我不认识的东西，稍微连接一下才知道 Markdown 除了最基本的 HTML 功能以外还可以扩展，再深入一点研究发现了 GFM 扩展和规范，更新了我对 Markdown 语言的很多认知，因此我想写一篇文章，记录下 GFM 的扩展规范，但后来发现 GFM 只是 GitHub 上使用的解释器的规定格式，和我的这个博客没有什么关系，因此文章都写完了到测试的时候才发现有的用不了，研究了好久都没搞明白Q_Q。</p>
